@@ -7,7 +7,7 @@ use std::{
 };
 
 use bevy_ecs::{intern::Interned, schedule::ScheduleLabel};
-use bevy_utils::TypeIdMap;
+use bevy_utils::TypeIdIndexMap;
 
 use crate::{
     prelude::*,
@@ -157,7 +157,7 @@ impl StateMetadata {
 /// `StateMachine::trans`, and other methods.
 #[derive(Component)]
 pub struct StateMachine {
-    states: TypeIdMap<StateMetadata>,
+    states: TypeIdIndexMap<StateMetadata>,
     /// Each transition and the state it should apply in (or [`AnyState`]). We store the transitions
     /// in a flat list so that we ensure we always check them in the right order; storing them in
     /// each StateMetadata would mean that e.g. we'd have to check every AnyState trigger before any
